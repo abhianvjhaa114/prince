@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Prince!</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@400;700&family=Dancing+Script:wght@700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* ===== GORGEOUS COLOR SCHEME ===== */
+        :root {
+            --primary: #FF3E4D; /* Vibrant red */
+            --secondary: #FF9E2C; /* Orange */
+            --accent: #FFD166; /* Golden yellow */
+            --dark: #2A2D34; /* Dark blue-gray */
+            --light: #FDFFFC; /* Cream white */
+            --love: #EF476F; /* Pink for shayaris */
+            --gradient-bg: linear-gradient(135deg, var(--primary), var(--secondary));
+            --gradient-gold: linear-gradient(to right, #FFD700, #FFA500);
+            --gradient-memories: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            --shadow-lg: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            line-height: 1.6;
+        }
+
+        /* ===== LOADING SCREEN ===== */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-bg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 0.5s ease;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loading-text {
+            color: white;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            font-family: 'Dancing Script', cursive;
+            animation: pulse 1.5s infinite;
+            margin-bottom: 2rem;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .loading-subtext {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            margin-top: 1rem;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .spinner {
+            width: 70px;
+            height: 70px;
+            border: 8px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* ===== MAIN CONTAINER ===== */
+        .birthday-container {
+            max-width: 100%;
+            overflow: hidden;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            min-height: 100vh;
+            background: var(--gradient-bg);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            padding: 2rem;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1530103862676-de8c9debad1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            max-width: 1200px;
+            z-index: 2;
+            position: relative;
+            width: 100%;
+            padding: 0 20px;
+        }
+
+        .hero-image {
+            position: relative;
+            width: clamp(180px, 50vw, 280px);
+            height: clamp(180px, 50vw, 280px);
+            border-radius: 50%;
+            border: 5px solid var(--accent);
+            box-shadow: var(--shadow-lg);
+            animation: float 3s ease-in-out infinite;
+            overflow: hidden;
+        }
+
+        .hero-image::before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border-radius: 50%;
+            background: var(--gradient-gold);
+            z-index: -1;
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            margin-bottom: 0.5rem;
+            font-family: 'Pacifico', cursive;
+            text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(to right, var(--accent), #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            display: inline-block;
+            line-height: 1.2;
+        }
+
+        .hero-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transform-origin: right;
+            animation: titleUnderline 2s forwards 1s;
+        }
+
+        @keyframes titleUnderline {
+            to { transform: scaleX(1); transform-origin: left; }
+        }
+
+        .age-display {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-family: 'Dancing Script', cursive;
+            color: var(--accent);
+            margin: 1rem 0;
+            text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.8rem clamp(1rem, 3vw, 2rem);
+            border-radius: 50px;
+            border: 2px dashed var(--accent);
+            animation: pulse 2s infinite;
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 1.5rem;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+            40% { transform: translateY(-20px) translateX(-50%); }
+            60% { transform: translateY(-10px) translateX(-50%); }
+        }
+
+        /* ===== SECTION STYLES ===== */
+        .section {
+            padding: clamp(3rem, 6vw, 6rem) clamp(1rem, 3vw, 2rem);
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            margin-bottom: clamp(1.5rem, 4vw, 3rem);
+            color: var(--primary);
+            font-family: 'Pacifico', cursive;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            line-height: 1.2;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-gold);
+            border-radius: 2px;
+        }
+
+        .section-content {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: clamp(1.5rem, 3vw, 3rem);
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            width: 100%;
+        }
+
+        /* ===== MEMORIES SECTION ===== */
+        .memories-section {
+            background: var(--gradient-memories);
+        }
+
+        .memory-item {
+            margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+            padding: clamp(1rem, 2vw, 2rem);
+            border-radius: 15px;
+            background: white;
+            box-shadow: var(--shadow);
+            position: relative;
+            padding-left: clamp(60px, 10vw, 80px);
+            transition: all 0.4s ease;
+            border-left: 5px solid var(--secondary);
+            overflow: hidden;
+        }
+
+        .memory-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .memory-item::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: clamp(50px, 8vw, 60px);
+            height: 100%;
+            background: var(--gradient-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: bold;
+        }
+
+        .memory-item:nth-child(1)::before {
+            content: "1";
+        }
+        .memory-item:nth-child(2)::before {
+            content: "2";
+        }
+        .memory-item:nth-child(3)::before {
+            content: "3";
+        }
+        .memory-item:nth-child(4)::before {
+            content: "4";
+        }
+        .memory-item:nth-child(5)::before {
+            content: "5";
+        }
+
+        .memory-item h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: clamp(1.4rem, 3vw, 1.8rem);
+            font-family: 'Dancing Script', cursive;
+            position: relative;
+            display: inline-block;
+        }
+
+        .memory-item h3::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50%;
+            height: 3px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .memory-item:hover h3::after {
+            width: 100%;
+        }
+
+        .memory-item p {
+            font-size: clamp(1rem, 2vw, 1.1rem);
+            line-height: 1.8;
+            color: #555;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .memory-item p::before {
+            content: "“";
+            position: absolute;
+            left: -5px;
+            top: -10px;
+            font-size: 3rem;
+            color: rgba(239, 71, 111, 0.2);
+            font-family: serif;
+        }
+
+        .memory-date {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.3rem 1rem;
+            background: var(--gradient-gold);
+            color: white;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        /* ===== MEMORY WALL REDESIGN ===== */
+        .memory-wall-section {
+            background: linear-gradient(to right, #f5f7fa, #c3cfe2);
+            padding: clamp(3rem, 6vw, 6rem) clamp(1rem, 3vw, 2rem);
+        }
+
+        .memory-wall-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 0 clamp(1rem, 3vw, 2rem);
+        }
+
+        .memory-wall-title {
+            text-align: center;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            margin-bottom: clamp(1.5rem, 4vw, 3rem);
+            color: var(--primary);
+            font-family: 'Pacifico', cursive;
+            position: relative;
+        }
+
+        .memory-wall-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: clamp(100px, 30vw, 150px);
+            height: 4px;
+            background: var(--gradient-gold);
+            border-radius: 2px;
+        }
+
+        .memory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: clamp(1.5rem, 4vw, 3rem);
+        }
+
+        .memory-card {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            height: 300px;
+            background: #000;
+        }
+
+        @media (max-width: 600px) {
+            .memory-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .memory-card {
+                height: 250px;
+            }
+        }
+
+        .memory-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .memory-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.8;
+            transition: all 0.5s ease;
+        }
+
+        .memory-card:hover .memory-image {
+            opacity: 0.6;
+            transform: scale(1.05);
+        }
+
+        .memory-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: clamp(1rem, 2vw, 2rem);
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            color: white;
+            transform: translateY(30px);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .memory-card:hover .memory-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .memory-title {
+            font-size: clamp(1.4rem, 3vw, 1.8rem);
+            margin-bottom: 0.5rem;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .memory-date {
+            display: inline-block;
+            background: var(--gradient-gold);
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .memory-description {
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .memory-location {
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .memory-location i {
+            margin-right: 5px;
+        }
+
+        /* ===== VOICE MESSAGE ===== */
+        .voice-message {
+            text-align: center;
+            padding: clamp(1.5rem, 3vw, 3rem) clamp(1rem, 2vw, 2rem);
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            border: 2px solid var(--accent);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .voice-message::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-bg);
+        }
+
+        .voice-btn {
+            background: var(--gradient-bg);
+            color: white;
+            border: none;
+            padding: clamp(12px, 3vw, 18px) clamp(20px, 5vw, 35px);
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .voice-btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, var(--secondary), var(--primary));
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .voice-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(210, 54, 105, 0.5);
+        }
+
+        .voice-btn:hover::before {
+            opacity: 1;
+        }
+
+        .voice-btn i {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+        }
+
+        /* ===== FRIENDSHIP AGREEMENT ===== */
+        .agreement-container {
+            perspective: 1000px;
+        }
+
+        .agreement-card {
+            background: white;
+            padding: clamp(1.5rem, 3vw, 3rem);
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            transform-style: preserve-3d;
+            transition: transform 0.8s ease;
+            position: relative;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .agreement-card:hover {
+            transform: rotateY(5deg);
+        }
+
+        .agreement-clause {
+            margin-bottom: clamp(1.5rem, 3vw, 2rem);
+            padding-bottom: clamp(1rem, 2vw, 2rem);
+            border-bottom: 1px dashed #eee;
+            position: relative;
+            padding-left: clamp(40px, 8vw, 50px);
+        }
+
+        .agreement-clause:last-child {
+            border-bottom: none;
+        }
+
+        .agreement-clause::before {
+            content: "✍️";
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: clamp(1.4rem, 3vw, 1.8rem);
+        }
+
+        .agreement-clause h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .agreement-clause p {
+            font-size: clamp(1rem, 2vw, 1.1rem);
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .signature-area {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-top: clamp(2rem, 4vw, 4rem);
+            padding-top: clamp(1.5rem, 3vw, 3rem);
+            border-top: 2px solid var(--accent);
+            position: relative;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .signature-area {
+                flex-direction: row;
+            }
+        }
+
+        .signature-area::before {
+            content: "Official Agreement";
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 0 20px;
+            color: var(--primary);
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+        }
+
+        .signature {
+            text-align: center;
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(1.4rem, 3vw, 1.8rem);
+            color: var(--primary);
+            position: relative;
+            width: 100%;
+            max-width: 200px;
+            margin: 0 auto;
+        }
+
+        .signature-line {
+            width: 100%;
+            height: 2px;
+            background: #ccc;
+            margin-top: 5px;
+        }
+
+        .sign-here {
+            background: var(--gradient-gold);
+            color: white;
+            border: none;
+            padding: clamp(12px, 3vw, 15px) clamp(20px, 4vw, 30px);
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            border-radius: 8px;
+            cursor: pointer;
+            margin: clamp(1.5rem, 3vw, 3rem) auto 0;
+            display: block;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+            font-weight: bold;
+        }
+
+        .sign-here:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(255, 215, 0, 0.4);
+        }
+
+        .agreement-accepted {
+            text-align: center;
+            padding: clamp(1rem, 2vw, 2rem);
+            background: rgba(76, 175, 80, 0.1);
+            border-radius: 10px;
+            margin-top: 2rem;
+            border: 2px dashed #4CAF50;
+            display: none;
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== FINAL MESSAGE ===== */
+        .final-message {
+            text-align: center;
+            padding: clamp(1.5rem, 3vw, 3rem);
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            margin-top: 2rem;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid var(--accent);
+        }
+
+        .final-message::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-bg);
+        }
+
+        .hindi-wish {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            line-height: 1.6;
+            margin: clamp(1.5rem, 3vw, 3rem) 0;
+            color: var(--love);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hindi-wish::before, .hindi-wish::after {
+            content: "❤️";
+            position: absolute;
+            font-size: clamp(1rem, 3vw, 1.5rem);
+        }
+
+        .hindi-wish::before {
+            left: clamp(-30px, -5vw, -40px);
+            top: clamp(-15px, -3vw, -20px);
+        }
+
+        .hindi-wish::after {
+            right: clamp(-30px, -5vw, -40px);
+            bottom: clamp(-15px, -3vw, -20px);
+        }
+
+        .surprise-btn {
+            background: var(--gradient-bg);
+            color: white;
+            border: none;
+            padding: clamp(12px, 3vw, 18px) clamp(20px, 5vw, 40px);
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-lg);
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .surprise-btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, var(--secondary), var(--primary));
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .surprise-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(210, 54, 105, 0.6);
+        }
+
+        .surprise-btn:hover::before {
+            opacity: 1;
+        }
+
+        .hidden-surprise {
+            display: none;
+            margin-top: clamp(1.5rem, 3vw, 3rem);
+            padding: clamp(1.5rem, 3vw, 3rem);
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            animation: fadeIn 1s ease;
+            border: 2px solid var(--accent);
+            position: relative;
+        }
+
+        .hidden-surprise::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-gold);
+        }
+
+        .hidden-surprise h3 {
+            color: var(--primary);
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 1.5rem;
+            font-family: 'Pacifico', cursive;
+        }
+
+        .hidden-surprise p {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            line-height: 1.8;
+            color: #555;
+        }
+
+        /* ===== ANIMATIONS & EFFECTS ===== */
+        .confetti {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: var(--accent);
+            opacity: 0.8;
+            animation: confetti-fall 5s linear infinite;
+            z-index: 10;
+        }
+
+        @keyframes confetti-fall {
+            0% { transform: translateY(-100px) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(360deg); }
+        }
+
+        .floating-heart {
+            position: absolute;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            color: var(--love);
+            animation: float-heart 8s linear infinite;
+            opacity: 0.7;
+            z-index: 1;
+            text-shadow: 0 0 10px rgba(239, 71, 111, 0.5);
+        }
+
+        @keyframes float-heart {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+
+        .gold-star {
+            position: absolute;
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            color: gold;
+            animation: twinkle 2s ease-in-out infinite alternate;
+            z-index: 1;
+        }
+
+        @keyframes twinkle {
+            from { opacity: 0.3; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* ===== RESPONSIVE DESIGN IMPROVEMENTS ===== */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: clamp(2.2rem, 8vw, 3rem);
+            }
+            
+            .hero-image {
+                width: clamp(180px, 50vw, 220px);
+                height: clamp(180px, 50vw, 220px);
+            }
+            
+            .section-title {
+                font-size: clamp(1.8rem, 6vw, 2.5rem);
+                white-space: normal;
+            }
+            
+            .section-content {
+                padding: clamp(1rem, 3vw, 2rem);
+            }
+            
+            .memory-item {
+                padding-left: clamp(50px, 10vw, 70px);
+            }
+            
+            .hindi-wish {
+                font-size: clamp(1.3rem, 5vw, 1.8rem);
+            }
+            
+            .hindi-wish::before, .hindi-wish::after {
+                font-size: clamp(0.9rem, 3vw, 1.2rem);
+            }
+            
+            .hindi-wish::before {
+                left: clamp(-20px, -5vw, -30px);
+                top: clamp(-10px, -3vw, -15px);
+            }
+            
+            .hindi-wish::after {
+                right: clamp(-20px, -5vw, -30px);
+                bottom: clamp(-10px, -3vw, -15px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .memory-item p::before {
+                font-size: 2rem;
+                top: -5px;
+            }
+            
+            .memory-item p {
+                padding-left: 15px;
+            }
+            
+            .hero-content {
+                gap: 1.5rem;
+            }
+            
+            .age-display {
+                margin: 0.5rem 0;
+            }
+            
+            .final-message {
+                padding: 1.5rem 1rem;
+            }
+            
+            .hidden-surprise {
+                padding: 1.5rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loader">
+        <div class="loading-text">Creating Magic...</div>
+        <div class="spinner"></div>
+        <div class="loading-subtext">Prince's Special Birthday Surprise</div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="birthday-container">
+        <!-- ===== HERO SECTION ===== -->
+        <section class="hero" id="home">
+            <!-- Confetti Animation -->
+            <div class="confetti" style="left: 10%;"></div>
+            <div class="confetti" style="left: 30%;"></div>
+            <div class="confetti" style="left: 70%;"></div>
+            <div class="confetti" style="left: 90%;"></div>
+            
+            <!-- Gold Stars -->
+            <div class="gold-star" style="top: 20%; left: 15%;">★</div>
+            <div class="gold-star" style="top: 30%; left: 85%;">★</div>
+            <div class="gold-star" style="top: 70%; left: 10%;">★</div>
+            <div class="gold-star" style="top: 80%; left: 90%;">★</div>
+
+            <div class="hero-content">
+                <h1 class="hero-title">Happy Birthday Prince!</h1>
+                
+                <div class="hero-image">
+                    <!-- Replace with Prince's photo -->
+                    <img src="images/mainphoto.jpg" alt="Prince's Photo" id="prince-photo">
+                </div>
+                
+                <div class="age-display" id="age-display">Turning 19 this year!</div>
+            </div>
+            
+            <div class="scroll-down" id="scroll-down">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </section>
+
+        <!-- ===== PURANI BAATEIN SECTION ===== -->
+        <section class="section memories-section">
+            <h2 class="section-title">Kuch Purani Baatein</h2>
+            
+            <div class="section-content">
+                <div class="memory-item">
+                    <h3>Pehli Mulaqat</h3>
+                    <p>bhai dekh mujhe toh pehli mulaqat yaad nhi hai bas itna janta hu ki jab tune pehli baar dekha hoga toh bola hoga ki ye koi chutiya hi hai aur abhi toh tujhe yakeen bhi ho gya hoga ye shi mein chutiya hai 😂😂
+                    </p>
+                    <!-- <span class="memory-date"></span> -->
+                </div>
+                
+                <div class="memory-item">
+                    <h3>last bench ki backchodiya</h3>
+                    <p>last bench mein baith ke jo ham chutiyap karte the aur pure class mein dabdaba bana liye the . ham sirf backchodiya karne ke liye winter holiday mein bhi class lagane ke liye aate the . hamara shukla kisi se bhi bheed jaata tha , karan ki jo ham milke firki lete the , ek dusre ka saman jo idhar udhar chupa dete the 😂😂</p>
+                    <!-- <span class="memory-date">2019</span> -->
+                </div>
+                
+                <div class="memory-item">
+                    <h3>woh lunch period ki khani</h3>
+                    <p>bhai waise toh lunch hamara lunch period tak jata nhi tha kyuki ham 10 ke 10 hi janwar the 😂. woh din bhi kya din the yrr . bhai aaj bhi jab mess mein sandwich milta hai tab tere woh laya hu sandwhich ydd aata hai aur tera woh bada sa tiffin hone ke bavjud bhi turant khatam ho jata tha 😂😂</p>
+                    <!-- <span class="memory-date">2020</span> -->
+                </div>
+                
+                <div class="memory-item">
+                    <h3>school ke baad ki khani</h3>
+                    <p>bhai kabhi kabhi toh mujhe shi mein pround hota hai ki hmara dosti abhi tak chal rha hai mana ki ab backchodiya kam ho gyi hai phir bhi sab ek dusre ke touch mein hai aur sabse best part hai jo ham bday mein group VC karte hai , maja hi aa jata hai usme ❤️</p>
+                    <!-- <span class="memory-date">2021</span> -->
+                </div>
+                
+               
+            </div>
+        </section>
+
+        <!-- ===== MEMORY WALL SECTION ===== -->
+        <section class="memory-wall-section">
+            <div class="memory-wall-container">
+                <h2 class="memory-wall-title">Our Memory Wall</h2>
+                
+                <div class="memory-grid">
+                    <div class="memory-card">
+                        <img src="images/second.jpg" alt="Memory 1" class="memory-image">
+                        <div class="memory-content">
+                            <!-- <h3 class="memory-title">First Day Together</h3> -->
+                            <!-- <span class="memory-date">May 2018</span> -->
+                            <!-- <p class="memory-description">Our very first photo together in college. Little did we know this would be the start of an amazing friendship!</p> -->
+                            <div class="memory-location">
+                                <!-- <i class="fas fa-map-marker-alt"></i> College Campus -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="memory-card">
+                        <img src="images/third.jpg" alt="Memory 2" class="memory-image">
+                        <div class="memory-content">
+                            <!-- <h3 class="memory-title">College Fest</h3> -->
+                            <!-- <span class="memory-date">March 2019</span> -->
+                            <!-- <p class="memory-description">When we participated in the college fest and won first prize in the dance competition!</p> -->
+                            <div class="memory-location">
+                                <!-- <i class="fas fa-map-marker-alt"></i> College Auditorium -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="memory-card">
+                        <img src="images/fourth.jpg" alt="Memory 3" class="memory-image">
+                        <div class="memory-content">
+                            <!-- <h3 class="memory-title">Birthday Celebration</h3> -->
+                            <!-- <span class="memory-date">May 2020</span> -->
+                            <!-- <p class="memory-description">Your surprise birthday party that I organized with all our friends!</p> -->
+                            <div class="memory-location">
+                                <!-- <i class="fas fa-map-marker-alt"></i> Your Home -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="memory-card">
+                        <img src="images/fifth.jpg" alt="Memory 4" class="memory-image">
+                        <div class="memory-content">
+                            <!-- <h3 class="memory-title">Goa Trip</h3>
+                            <span class="memory-date">July 2021</span>
+                            <p class="memory-description">Our first trip together to Goa - full of adventures and unforgettable moments!</p> -->
+                            <div class="memory-location">
+                                <!-- <i class="fas fa-map-marker-alt"></i> Goa Beach -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="memory-card">
+                        <img src="images/sixth.jpg" alt="Memory 5" class="memory-image">
+                        <div class="memory-content">
+                            <!-- <h3 class="memory-title">Late Night Talks</h3> -->
+                            <!-- <span class="memory-date">December 2021</span> -->
+                            <!-- <p class="memory-description">Those endless conversations we used to have about life, dreams, and everything in between.</p> -->
+                            <div class="memory-location">
+                                <!-- <i class="fas fa-map-marker-alt"></i> Terrace Cafe -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="memory-card">
+                        <img src="images/IMG-20240330-WA0138.jpg" alt="Memory 6" class="memory-image">
+                        <div class="memory-content">
+                            <!-- <h3 class="memory-title">Best Friends Forever</h3> -->
+                            <!-- <span class="memory-date">Present</span> -->
+                            <!-- <p class="memory-description">No matter where life takes us, we'll always have these memories to cherish.</p> -->
+                            <div class="memory-location">
+                                <!-- <i class="fas fa-map-marker-alt"></i> In Our Hearts -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== VOICE MESSAGE SECTION ===== -->
+        <section class="section" style="background: linear-gradient(to right, #8E2DE2, #4A00E0);">
+            <h2 class="section-title" style="color: white;">A Heartfelt Message</h2>
+            
+            <div class="section-content" style="background: rgba(255, 255, 255, 0.95);">
+                <div class="voice-message">
+                    <p style="font-size: 1.2rem; margin-bottom: 1rem;">Some things are better said than written...</p>
+                    <p style="font-family: 'Dancing Script', cursive; font-size: clamp(1.2rem, 3vw, 1.5rem); color: var(--primary);">Click below to hear my special message for you!</p>
+                    <button class="voice-btn" id="play-message">
+                        <i class="fas fa-play"></i> Play My Message
+                    </button>
+                    <audio id="birthday-message" src="images/princebdaymsg.mp3"></audio>
+                    <!-- Add your voice message audio file -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FRIENDSHIP AGREEMENT SECTION ===== -->
+        <section class="section" style="background: linear-gradient(to right, #ffc3a0, #ffafbd);">
+            <h2 class="section-title">Friendship Agreement</h2>
+            
+            <div class="section-content">
+                <div class="agreement-container">
+                    <div class="agreement-card">
+                        <div class="agreement-clause">
+                            <h3>Clause 1: Friends Forever</h3>
+                            <p>We promise to stay friends for life, no matter how far we are or how annoying one of us gets. Our friendship will last through everything.</p>
+                        </div>
+                        
+                        <div class="agreement-clause">
+                            <h3>Clause 2: Always There</h3>
+                            <p>We will celebrate happiy times together and support each other during sad times. No matter what happens, we will always be there for each other.</p>
+                        </div>
+                        
+                        <div class="agreement-clause">
+                            <h3>Clause 3:  No Hiding Big Things</h3>
+                            <p>If something big happens in life, we willl tell each other within 24 hours—unless it's a surprise that needs to stay secret. No keeping important stuff from each other.</p>
+                        </div>
+                        
+                        <div class="agreement-clause">
+                            <h3>Clause 4:Try to Meet Every Year</h3>
+                            <p>We will try too meet at least once a year, even if we have to travel across countries to make it happen. No excuses accepted for missing this sacred tradition.</p>
+                        </div>
+                        
+                        <div class="agreement-clause">
+                            <h3>Clause 5: Love You As You Are</h3>
+                            <p>We accept each other just the way we are—with all the weirdness and craziness. No judging, only love and support.</p>
+                        </div>
+                        
+                        <button class="sign-here" id="sign-agreement">Sign Here To Accept</button>
+                        
+                        <div class="agreement-accepted" id="agreement-accepted">
+                            <h3 style="color: #4CAF50; font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 1rem;">Agreement Accepted! ❤️</h3>
+                            <p>Yeh dosti ab officially hamesha ke liye pakki ho gayi hai!
+                                Ab isse todne ka koi option nahi hai! 😄</p>
+                            <p style="font-family: 'Dancing Script', cursive; font-size: clamp(1.2rem, 3vw, 1.5rem); margin-top: 1rem;">
+                                Ye dosti hum nahi todenge... todenge dam magar... tera saath na chhodenge!
+                            </p>
+                        </div>
+                        
+                        <div class="signature-area">
+                            <div class="signature">
+                                Prince
+                                <div class="signature-line"></div>
+                            </div>
+                            <div class="signature">
+                                Abhinav Jha
+                                <div class="signature-line"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FINAL MESSAGE SECTION ===== -->
+        <section class="section" style="background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%); min-height: 80vh; display: flex; flex-direction: column; justify-content: center;">
+            <!-- Floating Hearts -->
+            <div class="floating-heart" style="left: 10%; animation-delay: 0s;">❤️</div>
+            <div class="floating-heart" style="left: 30%; animation-delay: 1s;">❤️</div>
+            <div class="floating-heart" style="left: 70%; animation-delay: 2s;">❤️</div>
+            <div class="floating-heart" style="left: 90%; animation-delay: 3s;">❤️</div>
+            
+            <div class="section-content" style="background: rgba(255, 255, 255, 0.95);">
+                <h2 class="section-title" style="color: var(--primary);">Happy Birthday, Dost!</h2>
+                
+                <div class="final-message">
+                    <p style="font-size: clamp(1rem, 2vw, 1.2rem); line-height: 1.8;">You're not just a friend, you're family. No matter where life takes us, our bond will always remain strong. Wishing you the happiest birthday and an amazing year ahead! May all your dreams come true and may you find success in everything you do.</p>
+                    
+                    <div class="hindi-wish">
+                        जन्मदिन की हार्दिक शुभकामनाएं मेरे भाई प्रिंस को!<br>
+                        ईश्वर करे तुम्हारी ज़िंदगी खुशियों से भरी रहे और तुम हर मंज़िल को हासिल करो।<br>
+                        ढेर सारा प्यार और दुआएं ❤️🎉
+                    </div>
+                    
+                    <button class="surprise-btn" id="final-surprise">
+                        <i class="fas fa-gift"></i> Click for Final Surprise! 🎉
+                    </button>
+                    
+                    <div class="hidden-surprise" id="hidden-surprise">
+                        <h3>Happy Birthday Mere Bhai!</h3>
+                        <p>You're more than just a friend .
+
+                        Even though we are far from each other, our bond will never change. I always think about you and pray for your happiness.
+
+                        I hope this year brings you lots of joy and success. I'm really proud of you and excited to see all the great things you will do in life.</p>
+                        <p style="margin-top: 1.5rem;">I hope this year brings you lots of happiness and success! I'm really proud of the person you are now, and I'm excited to see all the great things you will do.</p>
+                        <p style="font-family: 'Dancing Script', cursive; font-size: clamp(1.2rem, 3vw, 1.5rem); margin-top: 2rem; color: var(--primary);">
+                            No matter where life takes us, you'll always be my best friend!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Hidden Audio (Birthday Song) -->
+    <audio id="birthday-audio" src="birthday-song.mp3"></audio>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Loading screen
+            setTimeout(() => {
+                document.querySelector('.loader').classList.add('hidden');
+                
+                // Create initial floating hearts
+                for (let i = 0; i < 10; i++) {
+                    createFloatingHeart();
+                }
+            }, 3000);
+
+            // Calculate age
+            function calculateAge() {
+                const birthDate = new Date('2006-05-18');
+                const today = new Date();
+                let age = today.getFullYear() - birthDate.getFullYear();
+                const monthDiff = today.getMonth() - birthDate.getMonth();
+                
+                if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                    age--;
+                }
+                
+                document.getElementById('age-display').textContent = `Today you turn ${age} years young!`;
+            }
+            
+            calculateAge();
+
+            // Scroll to next section
+            document.getElementById('scroll-down').addEventListener('click', function() {
+                document.querySelector('.section').scrollIntoView({ 
+                    behavior: 'smooth' 
+                });
+            });
+
+            // Voice message player
+            const playButton = document.getElementById('play-message');
+            const audio = document.getElementById('birthday-message');
+            
+            playButton.addEventListener('click', function() {
+                if (audio.paused) {
+                    audio.play()
+                        .then(() => {
+                            playButton.innerHTML = '<i class="fas fa-pause"></i> Playing...';
+                        })
+                        .catch(error => {
+                            alert("Couldn't play the audio. Please check if you've added the audio file.");
+                            console.error(error);
+                        });
+                } else {
+                    audio.pause();
+                    audio.currentTime = 0;
+                    playButton.innerHTML = '<i class="fas fa-play"></i> Play My Message';
+                }
+            });
+
+            // Friendship agreement signing
+            const signButton = document.getElementById('sign-agreement');
+            const agreementAccepted = document.getElementById('agreement-accepted');
+            
+            signButton.addEventListener('click', function() {
+                this.style.display = 'none';
+                agreementAccepted.style.display = 'block';
+                
+                // Create confetti
+                createConfetti();
+                
+                // Play celebration sound
+                const audio = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-achievement-bell-600.mp3');
+                audio.play();
+            });
+
+            // Final surprise
+            const surpriseButton = document.getElementById('final-surprise');
+            const hiddenSurprise = document.getElementById('hidden-surprise');
+            
+            surpriseButton.addEventListener('click', function() {
+                // Play birthday song
+                const audio = document.getElementById('birthday-audio');
+                audio.play();
+                
+                // Show hidden message
+                hiddenSurprise.style.display = 'block';
+                this.style.display = 'none';
+                
+                // Create confetti
+                createConfetti();
+                
+                // Create floating hearts
+                for (let i = 0; i < 30; i++) {
+                    createFloatingHeart();
+                }
+            });
+
+            // Create confetti effect
+            function createConfetti() {
+                const colors = ['#FF9A9E', '#FAD0C4', '#A1C4FD', '#C2E9FB', '#FFD166', '#FFD700'];
+                
+                for (let i = 0; i < 150; i++) {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.width = Math.random() * 12 + 8 + 'px';
+                    confetti.style.height = Math.random() * 12 + 8 + 'px';
+                    confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
+                    confetti.style.animationDelay = Math.random() * 2 + 's';
+                    
+                    document.body.appendChild(confetti);
+                    
+                    // Remove confetti after animation
+                    setTimeout(() => {
+                        confetti.remove();
+                    }, 5000);
+                }
+            }
+
+            // Create floating hearts
+            function createFloatingHeart() {
+                const sections = document.querySelectorAll('.section, .hero, .memory-wall-section');
+                const randomSection = sections[Math.floor(Math.random() * sections.length)];
+                
+                const heart = document.createElement('div');
+                heart.className = 'floating-heart';
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = Math.random() * 5 + 5 + 's';
+                heart.style.animationDelay = Math.random() * 3 + 's';
+                randomSection.appendChild(heart);
+                
+                // Remove heart after animation
+                setTimeout(() => {
+                    heart.remove();
+                }, 8000);
+            }
+
+            // Replace placeholder image with actual photo
+            // document.getElementById('prince-photo').src = "actual-photo-url.jpg";
+        });
+    </script>
+</body>
+</html>
